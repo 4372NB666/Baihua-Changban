@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>白话 · 长坂 | 赵云七进七出 · 东方史诗概念站</title>
+<meta name="description" content="白话 · 长坂 —— 正史不写，说书人讲了一千年。一个关于赵云七进七出的东方史诗概念站，非商业粉丝概念作品。">
+<meta name="theme-color" content="#17130f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="白话 · 长坂 ｜ 七进七出">
+<meta property="og:description" content="正史不写，说书人讲了一千年。">
+<style>
+/* ============ 基础 ============ */
+:root{
+  --ink:#17130f;
+  --ink-2:#201a14;
+  --ink-3:#2c241a;
+  --paper:#ece0c5;
+  --paper-dim:#c9bb9e;
+  --paper-faint:#a99b80;
+  --gold:#e0c27f;
+  --gold-hi:#f5e2b3;
+  --gold-deep:#a88446;
+  --cinnabar:#b03a2b;
+  --cinnabar-hi:#d4593f;
+  --line:rgba(224,194,127,.3);
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --en:"Cinzel","Trajan Pro","Times New Roman",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--cinnabar);color:var(--paper)}
+body::before{
+  content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:9997;pointer-events:none;
+  box-shadow:inset 0 0 180px 24px rgba(0,0,0,.38);
+}
+/* 滚动进度 */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:10000;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold-hi),var(--cinnabar-hi));
+  box-shadow:0 0 12px rgba(224,194,127,.7)}
+/* ============ 导航 ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:9000;display:flex;align-items:center;justify-content:space-between;
+  padding:20px clamp(20px,5vw,72px);transition:background .45s,padding .45s,border-color .45s;
+  border-bottom:1px solid transparent}
+nav.solid{background:rgba(23,19,15,.9);backdrop-filter:blur(14px);padding-top:13px;padding-bottom:13px;border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--paper)}
+.seal{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--cinnabar);color:var(--cinnabar-hi);
+  font-family:var(--serif);font-size:12px;line-height:1.05;text-align:center;letter-spacing:0;
+  background:rgba(176,58,43,.08);writing-mode:vertical-rl;padding:3px}
+.brand b{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.32em}
+.brand small{display:block;font-family:var(--en);font-size:8px;letter-spacing:.28em;color:var(--paper-faint);margin-top:3px}
+.navlinks{display:flex;gap:clamp(14px,2.4vw,34px)}
+.navlinks a{color:var(--paper-dim);text-decoration:none;font-size:12px;letter-spacing:.3em;font-family:var(--serif);
+  position:relative;padding:6px 0;transition:color .3s}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .35s}
+.navlinks a:hover{color:var(--gold-hi)}
+.navlinks a:hover::after{width:100%}
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:
+    radial-gradient(ellipse 75% 42% at 50% 104%,rgba(178,66,26,.42),transparent 70%),
+    radial-gradient(ellipse 40% 30% at 18% 88%,rgba(120,40,18,.3),transparent 72%),
+    radial-gradient(ellipse 45% 35% at 84% 90%,rgba(150,60,20,.24),transparent 72%),
+    linear-gradient(180deg,#14110e 0%,#1e1813 42%,#2a1c11 78%,#39220f 100%);
+}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 55% at 50% 46%,transparent 25%,rgba(8,6,5,.5) 100%);
+  z-index:2;pointer-events:none}
+#ash{position:absolute;inset:0;z-index:3;pointer-events:none}
+.ridge{position:absolute;left:-6%;width:112%;bottom:0;z-index:1;pointer-events:none}
+.ridge.far{opacity:.46;filter:blur(1px)}
+.ridge.mid{opacity:.76}
+.ridge.near{opacity:1}
+.couplet{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  writing-mode:vertical-rl;font-family:var(--serif);font-size:clamp(13px,1.15vw,17px);
+  letter-spacing:.6em;color:rgba(236,224,197,.68);text-shadow:0 0 18px rgba(0,0,0,.85)}
+.couplet.l{left:clamp(20px,5vw,90px)}
+.couplet.r{right:clamp(20px,5vw,90px)}
+.couplet::after{content:"";display:block;width:1px;height:56px;margin:22px auto 0;
+  background:linear-gradient(180deg,var(--gold-deep),transparent)}
+.hero-inner{position:relative;z-index:6;text-align:center;padding:0 20px;transform:translateY(-2vh)}
+.eyebrow{font-family:var(--en);font-size:10px;letter-spacing:.62em;color:var(--gold-deep);margin-bottom:30px}
+.eyebrow span{display:inline-block;padding:0 14px;color:var(--paper-faint)}
+.title{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,42px);
+  font-family:var(--serif);font-weight:700;font-size:clamp(88px,15vw,210px);line-height:1;letter-spacing:.06em;
+  background:linear-gradient(172deg,#fff5dc 4%,var(--gold-hi) 28%,var(--gold) 48%,#8c672c 70%,#e8cd95 96%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 6px 26px rgba(0,0,0,.85)) drop-shadow(0 0 46px rgba(200,140,50,.22));
+  user-select:none}
+.title i{font-style:normal;display:inline-block;animation:rise 1.5s cubic-bezier(.2,.8,.2,1) both}
+.title i:nth-child(2){animation-delay:.16s}
+@keyframes rise{from{opacity:0;transform:translateY(46px) rotate(-3deg);filter:blur(9px)}to{opacity:1;transform:none;filter:blur(0)}}
+.title-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(230px,32vw,430px);height:clamp(230px,32vw,430px);
+  border:1px solid rgba(224,194,127,.1);border-radius:50%;pointer-events:none;z-index:-1}
+.title-mark::before,.title-mark::after{content:"";position:absolute;inset:12%;border:1px solid rgba(224,194,127,.07);border-radius:50%}
+.title-mark::after{inset:26%;border-style:dashed;opacity:.7}
+.sub{margin-top:26px;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.sub .cn{font-family:var(--serif);font-size:clamp(15px,1.5vw,20px);letter-spacing:.5em;color:var(--paper)}
+.sub .en{font-family:var(--en);font-size:10px;letter-spacing:.36em;color:var(--gold-deep)}
+.sub .rule{width:44px;height:1px;background:var(--gold-deep)}
+.quote{margin-top:34px;font-family:var(--serif);font-size:13px;letter-spacing:.42em;color:var(--paper-dim)}
+.tagline{margin-top:14px;font-family:var(--serif);font-size:11px;letter-spacing:.3em;color:var(--gold-deep)}
+.enter{margin-top:44px;display:inline-flex;align-items:center;gap:14px;cursor:pointer;background:none;border:none;
+  color:var(--gold);font-family:var(--serif);font-size:13px;letter-spacing:.4em;padding:14px 34px;
+  border:1px solid var(--line);transition:.4s;position:relative;overflow:hidden}
+.enter::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(224,194,127,.16),transparent);
+  transform:translateX(-100%);transition:transform .7s}
+.enter:hover{border-color:var(--gold);color:var(--gold-hi);letter-spacing:.5em}
+.enter:hover::before{transform:translateX(100%)}
+.enter .arrow{font-family:var(--en);font-size:15px}
+.scrollcue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:6;text-align:center;color:var(--paper-faint);
+  font-size:10px;letter-spacing:.4em;font-family:var(--serif)}
+.scrollcue .bar{display:block;width:1px;height:46px;margin:12px auto 0;background:linear-gradient(180deg,var(--gold-deep),transparent);
+  animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+/* ============ 通用 section ============ */
+section{position:relative}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(22px,5vw,48px)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+  border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:clamp(46px,6vw,80px)}
+.sec-head .idx{font-family:var(--en);font-size:10px;letter-spacing:.4em;color:var(--gold-deep);margin-bottom:12px}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(34px,4.6vw,60px);letter-spacing:.22em;line-height:1.1;
+  color:var(--paper);text-shadow:0 0 34px rgba(224,194,127,.14)}
+.sec-head .en{font-family:var(--en);font-size:10px;letter-spacing:.34em;color:var(--paper-faint);text-align:right;line-height:1.9}
+/* 序章 */
+#prologue{padding:clamp(110px,13vw,170px) 0;background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 50%,var(--ink) 100%)}
+.pro-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.pro-side{color:var(--paper-faint);font-size:12px;line-height:2.4;letter-spacing:.14em}
+.pro-side .big{font-family:var(--en);font-size:clamp(38px,5vw,64px);color:rgba(224,194,127,.09);letter-spacing:.1em;line-height:1;margin-bottom:20px}
+.pro-side.right{text-align:right}
+.switch{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.switch .sw{background:none;border:none;color:var(--paper-faint);font-family:var(--serif);font-size:12px;
+  letter-spacing:.24em;cursor:pointer;padding:8px 4px;border-bottom:1px solid transparent;transition:.35s}
+.switch .sw:hover{color:var(--paper-dim)}
+.switch .sw.on{color:var(--gold-hi);border-bottom-color:var(--gold-deep)}
+.switch .sw-div{color:var(--gold-deep);font-size:11px}
+.pane{display:none}
+.pane.on{display:block;animation:fade .7s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.vertical{writing-mode:vertical-rl;font-family:var(--serif);font-size:clamp(17px,1.7vw,22px);line-height:2.5;
+  letter-spacing:.34em;color:var(--paper);height:min(66vh,560px);
+  border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 34px}
+.vertical em{font-style:normal;color:var(--gold-hi)}
+.vertical.sutra{font-size:clamp(18px,1.9vw,25px);letter-spacing:.46em;line-height:2.9}
+.pro-sign{margin-top:26px;text-align:center;font-family:var(--serif);font-size:11px;letter-spacing:.3em;color:var(--paper-faint)}
+/* 七进 */
+#chapters{padding:clamp(110px,13vw,170px) 0;background:
+  radial-gradient(ellipse 60% 30% at 50% 0%,rgba(120,45,18,.13),transparent 70%),var(--ink)}
+.chap-note{font-family:var(--serif);font-size:12px;color:var(--paper-faint);letter-spacing:.2em;line-height:2.1;margin-bottom:26px;max-width:760px}
+.trail{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0 30px;flex-wrap:wrap}
+.trail-label,.trail-count{font-family:var(--serif);font-size:11px;letter-spacing:.3em;color:var(--paper-faint);white-space:nowrap}
+.trail-count b{color:var(--gold);font-size:16px;font-weight:500}
+.dots{display:flex;align-items:center;gap:9px}
+.dots i{width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;
+  font-family:var(--serif);font-style:normal;font-size:12px;color:var(--paper-faint);transition:.6s}
+.dots i.lit{background:rgba(176,58,43,.24);border-color:var(--cinnabar);color:var(--gold-hi);
+  box-shadow:0 0 18px rgba(176,58,43,.4)}
+.scroll{position:relative;border-top:1px solid var(--line)}
+.chap{position:relative;display:grid;grid-template-columns:92px 132px 1fr 110px;gap:clamp(14px,3vw,40px);align-items:center;
+  padding:clamp(30px,4vw,50px) 18px;border-bottom:1px solid var(--line);transition:background .5s;cursor:default}
+.chap::before{content:"";position:absolute;left:0;top:0;width:0;height:100%;
+  background:linear-gradient(90deg,rgba(176,58,43,.16),rgba(224,194,127,.045),transparent);transition:width .7s;z-index:0}
+.chap:hover::before{width:100%}
+.chap>*{position:relative;z-index:1}
+.chap .num{font-family:var(--serif);font-size:clamp(40px,5vw,68px);color:rgba(224,194,127,.2);line-height:1;
+  transition:color .5s,transform .5s;font-weight:600}
+.chap:hover .num{color:var(--gold);transform:translateX(6px)}
+.chap .glyph{font-family:var(--serif);font-size:clamp(24px,2.6vw,34px);letter-spacing:.3em;color:var(--paper);white-space:nowrap}
+.chap .glyph small{display:block;font-family:var(--en);font-size:9px;letter-spacing:.28em;color:var(--gold-deep);margin-top:9px}
+.chap .desc{font-family:var(--serif);font-size:clamp(13px,1.25vw,16px);line-height:2.1;letter-spacing:.1em;color:var(--paper-dim)}
+.chap .body{min-width:0}
+.chap .src{margin-top:14px;display:flex;align-items:flex-start;gap:10px;max-width:660px;
+  font-family:var(--serif);font-size:11px;line-height:1.9;letter-spacing:.04em;
+  color:var(--paper-faint);transition:color .5s}
+.chap .src b{flex:none;font-weight:500;font-size:10px;letter-spacing:0;padding:2px 5px;margin-top:2px;
+  border:1px solid var(--line);color:var(--gold)}
+.chap .src.yan b{color:var(--cinnabar-hi);border-color:rgba(176,58,43,.45)}
+.chap:hover .src{color:var(--paper-dim)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;margin:-6px 0 24px;
+  font-family:var(--serif);font-size:11px;letter-spacing:.1em;color:var(--paper-faint)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend b{font-weight:500;font-size:10px;letter-spacing:0;padding:2px 5px;
+  border:1px solid var(--line);color:var(--gold)}
+.legend span:last-child b{color:var(--cinnabar-hi);border-color:rgba(176,58,43,.45)}
+.chap .stamp{justify-self:end;width:56px;height:56px;border:1px solid rgba(176,58,43,.5);color:var(--cinnabar-hi);
+  font-family:var(--serif);font-size:11px;line-height:1.3;display:grid;place-items:center;text-align:center;
+  writing-mode:vertical-rl;letter-spacing:.1em;transform:rotate(-6deg);opacity:.55;transition:.5s}
+.chap:hover .stamp{opacity:1;transform:rotate(0);box-shadow:0 0 24px rgba(176,58,43,.28);background:rgba(176,58,43,.08)}
+/* 影神图 */
+#figures{padding:clamp(110px,13vw,170px) 0;background:linear-gradient(180deg,var(--ink),var(--ink-2) 55%,var(--ink))}
+.fig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.fig-narrator::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--cinnabar);opacity:.6}
+.fig{position:relative;background:var(--ink);padding:clamp(26px,3vw,42px) clamp(20px,2.4vw,32px);min-height:330px;
+  display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:background .5s}
+.fig:hover{background:var(--ink-3)}
+.fig::after{content:"";position:absolute;right:-40px;bottom:-60px;width:180px;height:180px;border:1px solid rgba(224,194,127,.08);
+  border-radius:50%;transition:.6s}
+.fig:hover::after{transform:scale(1.35);border-color:rgba(224,194,127,.18)}
+.fig .kind{font-family:var(--en);font-size:9px;letter-spacing:.4em;color:var(--gold-deep)}
+.fig .char{font-family:var(--serif);font-size:clamp(56px,6.5vw,88px);line-height:1;color:transparent;
+  -webkit-text-stroke:1px rgba(224,194,127,.55);align-self:center;margin:18px 0;transition:.6s}
+.fig:hover .char{-webkit-text-stroke:1px var(--gold-hi);text-shadow:0 0 34px rgba(224,194,127,.28)}
+.fig h3{font-family:var(--serif);font-size:18px;letter-spacing:.24em;font-weight:500;color:var(--paper);margin-bottom:12px}
+.fig p{font-family:var(--serif);font-size:12px;line-height:2;letter-spacing:.08em;color:var(--paper-faint)}
+/* 尾声 */
+#epilogue{padding:clamp(130px,16vw,220px) 0;text-align:center;position:relative;
+  background:radial-gradient(ellipse 55% 60% at 50% 55%,rgba(120,45,18,.16),transparent 72%),var(--ink)}
+.epi-line{font-family:var(--serif);font-size:clamp(38px,7.5vw,104px);letter-spacing:.3em;font-weight:600;
+  background:linear-gradient(180deg,var(--paper),var(--gold) 60%,var(--gold-deep));
+  -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.4}
+.epi-line.blaze{animation:blaze 2s ease both}
+@keyframes blaze{0%{filter:drop-shadow(0 0 0 rgba(224,194,127,0))}40%{filter:drop-shadow(0 0 34px rgba(224,194,127,.7))}100%{filter:drop-shadow(0 0 0 rgba(224,194,127,0))}}
+.epi-sub{margin-top:28px;font-family:var(--serif);font-size:13px;letter-spacing:.3em;color:var(--paper-dim);line-height:2}
+.epi-en{margin-top:14px;font-family:var(--en);font-size:10px;letter-spacing:.44em;color:var(--gold-deep)}
+.epi-seal{display:inline-block;margin-top:36px;font-family:var(--serif);font-size:11px;letter-spacing:.4em;
+  color:var(--paper-faint);border:1px solid var(--line);padding:9px 22px;transition:.9s}
+.epi-seal.done{color:var(--gold-hi);border-color:var(--gold-deep);background:rgba(224,194,127,.07);
+  box-shadow:0 0 30px rgba(224,194,127,.18)}
+.epi-rule{width:1px;height:80px;margin:48px auto 0;background:linear-gradient(180deg,var(--gold-deep),transparent)}
+/* footer */
+footer{border-top:1px solid var(--line);padding:44px clamp(22px,5vw,48px);text-align:center;background:#100d0a}
+footer .ft-brand{font-family:var(--serif);font-size:14px;letter-spacing:.4em;color:var(--paper-dim);margin-bottom:12px}
+footer .ft-note{font-family:var(--serif);font-size:11px;letter-spacing:.2em;color:var(--gold-deep);margin-bottom:18px}
+footer p{font-size:11px;line-height:2.1;color:var(--paper-faint);letter-spacing:.06em;max-width:760px;margin:0 auto}
+footer .ft-en{font-family:var(--en);font-size:9px;letter-spacing:.34em;color:#8c7d64;margin-top:20px}
+/* ============ 逐章下滑按钮 ============ */
+.next-wrap{text-align:center;margin-top:clamp(38px,6vw,72px)}
+.next-btn{display:inline-flex;align-items:center;gap:14px;cursor:pointer;background:none;
+  border:none;border-bottom:1px solid var(--line);padding:10px 20px 12px;
+  color:var(--paper-dim);font-family:var(--serif);font-size:12px;letter-spacing:.36em;transition:.45s}
+.next-btn span{display:inline-block;font-family:var(--en);font-size:14px;color:var(--gold-deep);transition:transform .45s,color .45s}
+.next-btn:hover{color:var(--gold-hi);border-bottom-color:var(--gold);letter-spacing:.44em}
+.next-btn:hover span{transform:translateY(4px);color:var(--gold-hi)}
+.next-btn.up:hover span{transform:translateY(-4px)}
+.chap-next{margin-top:16px;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  background:none;border:none;padding:2px 0;color:var(--paper-faint);
+  font-family:var(--serif);font-size:10px;letter-spacing:.28em;transition:.4s;
+  border-bottom:1px solid transparent}
+.chap-next span{display:inline-block;font-family:var(--en);font-size:12px;color:var(--gold-deep);transition:transform .4s}
+.chap-next:hover{color:var(--gold-hi);border-bottom-color:var(--gold-deep)}
+.chap-next:hover span{transform:translateY(3px)}
+section,.chap{scroll-margin-top:72px}
+/* ============ 音 · 氛围开关 ============ */
+#audioBtn{position:fixed;right:clamp(18px,3vw,40px);bottom:clamp(18px,3vw,40px);z-index:9500;
+  width:56px;height:56px;border-radius:50%;cursor:pointer;
+  background:rgba(23,19,15,.86);border:1px solid rgba(176,58,43,.62);
+  color:var(--paper-dim);font-family:var(--serif);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  backdrop-filter:blur(8px);transition:border-color .45s,color .45s,background .45s,box-shadow .45s;
+  animation:audioPulse 3s ease-out 3}
+#audioBtn .au-char{font-size:17px;letter-spacing:0;line-height:1}
+#audioBtn .au-state{font-size:8px;letter-spacing:.1em;color:var(--paper-faint)}
+#audioBtn:hover{border-color:var(--cinnabar-hi);color:var(--gold-hi)}
+#audioBtn.on{border-color:var(--cinnabar-hi);background:rgba(176,58,43,.18);color:var(--gold-hi);
+  box-shadow:0 0 26px rgba(176,58,43,.3)}
+#audioBtn.on .au-state{color:var(--gold)}
+#audioBtn:disabled{opacity:.4;cursor:not-allowed;animation:none}
+@keyframes audioPulse{0%{box-shadow:0 0 0 0 rgba(176,58,43,.42)}70%{box-shadow:0 0 0 16px rgba(176,58,43,0)}100%{box-shadow:0 0 0 0 rgba(176,58,43,0)}}
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
+/* 响应式 */
+@media(max-width:900px){
+  .navlinks{display:none}
+  .couplet{display:none}
+  .fig-grid{grid-template-columns:repeat(2,1fr)}
+  .fig:last-child{grid-column:span 2}
+  .fig:last-child{min-height:240px}
+  .chap{grid-template-columns:64px 1fr;gap:14px 20px}
+  .chap .glyph{grid-column:2;grid-row:1}
+  .chap .num{grid-column:1;grid-row:1/3;font-size:44px}
+  .chap .body{grid-column:2;grid-row:2}
+  .chap .stamp{display:none}
+  .pro-grid{grid-template-columns:1fr;gap:34px}
+  .pro-side{display:none}
+  .vertical{height:auto;writing-mode:horizontal-tb;border:none;border-left:2px solid var(--line);padding:0 0 0 22px;
+    font-size:17px;line-height:2.3;letter-spacing:.14em}
+  .vertical.sutra{font-size:18px;line-height:2.4;letter-spacing:.16em}
+  .pro-sign{text-align:left}
+  .switch{justify-content:flex-start}
+}
+@media(max-width:520px){
+  .fig-grid{grid-template-columns:1fr}
+  .fig:last-child{grid-column:auto}
+  .fig:last-child{min-height:230px}
+  .fig{min-height:230px}
+  .fig .char{font-size:64px}
+  .title{font-size:clamp(72px,22vw,120px)}
+  .sub .rule{display:none}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .sec-head .en{text-align:left}
+  .dots{gap:6px}
+  .dots i{width:26px;height:26px;font-size:11px}
+  .trail-label{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<button id="audioBtn" type="button" aria-label="战场声开关" aria-pressed="false" title="战场声 · 金戈交击（点击开启）">
+  <span class="au-char">音</span><span class="au-state">关</span>
+</button>
+
+<nav id="nav">
+  <a class="brand" href="#top">
+    <span class="seal">白话</span>
+    <span><b>白 话 · 长 坂</b><small>BAIHUA / A PLAIN TALE OF CHANGBAN</small></span>
+  </a>
+  <div class="navlinks">
+    <a href="#prologue">序章</a>
+    <a href="#chapters">七进</a>
+    <a href="#figures">影神图</a>
+    <a href="#epilogue">尾声</a>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero" id="top">
+  <svg class="ridge far" viewBox="0 0 1600 300" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#1b1510" d="M0 300V190l110-42 92 30 118-74 96 62 130-96 104 78 132-52 118 66 140-88 122 74 108-46 130 58v140z"/>
+  </svg>
+  <svg class="ridge mid" viewBox="0 0 1600 260" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#120d09" d="M0 260V176l150-58 120 46 148-78 128 72 160-46 138 62 152-84 146 76 168-40 140 54v80z"/>
+  </svg>
+  <svg class="ridge near" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#171009" d="M0 200V150l120-30 180 34 160-46 190 40 170-30 200 42 180-36 200 40 200-38v74z"/>
+    <path fill="#171009" d="M0 200v-24l240 12 260-16 280 20 300-18 260 16 260-12v22z"/>
+  </svg>
+  <canvas id="ash"></canvas>
+  <div class="couplet l">单骑入万阵</div>
+  <div class="couplet r">白袍染血归</div>
+
+  <div class="hero-inner">
+    <div class="eyebrow">A PLAIN TALE <span>／</span> ORIENTAL EPIC CONCEPT</div>
+    <div class="title-mark"></div>
+    <h1 class="title"><i>白</i><i>话</i></h1>
+    <div class="sub">
+      <span class="rule"></span>
+      <span class="cn">长坂 · 七进七出</span>
+      <span class="rule"></span>
+    </div>
+    <div class="sub" style="margin-top:10px"><span class="en">BAIHUA · SEVEN SORTIES AT CHANGBAN · A.D. 208</span></div>
+    <div class="quote">「 一 身 都 是 胆 」</div>
+    <div class="tagline">正 史 不 写 · 说 书 人 讲 了 一 千 年</div>
+    <button class="enter" id="enterBtn">入 阵 <span class="arrow">↓</span></button>
+  </div>
+
+  <div class="scrollcue">向 下 · 入 阵<span class="bar"></span></div>
+</header>
+
+<!-- ========== 序章 ========== -->
+<section id="prologue">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="idx">PROLOGUE / 00</div><h2>序 章</h2></div>
+      <div class="en">THE BATTLE OF CHANGBAN<br>建 安 十 三 年 · 秋</div>
+    </div>
+    <div class="pro-grid">
+      <div class="pro-side rv d1">
+        <div class="big">208</div>
+        曹操南征，荆州望风而降。<br>
+        玄德携民渡江，日行十余里。<br>
+        当阳长坂，五千轻骑一夜追至。<br>
+        十万百姓，一朝溃散。
+      </div>
+      <div class="rv d2">
+        <div class="switch" role="tablist" aria-label="叙事版本">
+          <button class="sw on" data-pane="tale" role="tab" aria-selected="true">说书人 · 白话</button>
+          <span class="sw-div">／</span>
+          <button class="sw" data-pane="annals" role="tab" aria-selected="false">陈寿 · 史书</button>
+        </div>
+        <div class="pane on" id="pane-tale">
+          <div class="vertical">
+            建安十三年秋，曹公南下，玄德奔江陵。<br>
+            当阳长坂，铁骑压境，旌旗蔽野。军中失散，<br>
+            妻孥不知所在，诸将各自引去。<br>
+            <em>独有一白袍，逆流而入。</em><br>
+            众皆北走，彼独南行；<br>
+            众皆求生，彼独赴死。<br>
+            是日，长坂坡上，七入七出。
+          </div>
+        </div>
+        <div class="pane" id="pane-annals">
+          <div class="vertical sutra">
+            及先主为曹公所追于当阳长坂，<br>
+            弃妻子南走，云身抱弱子，<br>
+            即后主也，保护甘夫人，<br>
+            即后主母也，皆得免难。<br>
+            <em>—— 《三国志 · 赵云传》</em>
+          </div>
+        </div>
+        <div class="pro-sign" id="proSign">— 据《三国演义》及民间叙事演绎 —</div>
+      </div>
+      <div class="pro-side right rv d3">
+        <div class="big">ONE</div>
+        一人，一马，一枪。<br>
+        怀中一婴，身后百万军。<br>
+        史书只给他四十一字，<br>
+        说书人却讲了一千年。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 七进 ========== -->
+<section id="chapters">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="idx">CHAPTERS / I — VII</div><h2>七 进</h2></div>
+      <div class="en">SEVEN SORTIES<br>七 幕 · 卷 轴</div>
+    </div>
+    <p class="chap-note rv">【史料层级】「七进七出」非史书原文：陈寿《三国志·赵云传》正文记此役仅四十一字，止于「皆得免难」；裴松之注引《云别传》另补数语；七幕情节多出《三国演义》第四十一、四十二回；「七进七出」之名与「常胜将军」之称，则为后世评话、戏曲所概括。每幕按语只标来源，不作论断。<br>【辨误】「一身都是胆」出自汉水之战（建安二十四年）而非长坂，本站仅置于尾声，不混入七幕。</p>
+    <div class="legend rv"><span><b>史</b> 陈寿《三国志》正文</span><span><b>注</b> 裴注引《云别传》</span><span><b>演</b> 《三国演义》</span></div>
+    <div class="trail rv" id="trail">
+      <span class="trail-label">入 阵 进 度</span>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+      <span class="trail-count"><b id="trailNum">0</b> / 7</span>
+    </div>
+    <div class="scroll" id="scrollList">
+      <article class="chap rv"><div class="num">壹</div><div class="glyph">逆 入<small>I · AGAINST THE TIDE</small></div><div class="body"><div class="desc">万骑南压，众生北走。独有一骑，反向而行。白袍入尘烟，回首不见自家旗。</div><div class="src"><b>注</b><span>陈寿正文无「逆入」，仅记「弃妻子南走」。裴注引《云别传》：或谓云已北去，先主以手戟擿之曰「子龙不弃我走也」，顷之云至。</span></div></div><div class="stamp">单骑</div></article>
+      <article class="chap rv"><div class="num">贰</div><div class="glyph">寻 主<small>II · THE SEARCH</small></div><div class="body"><div class="desc">乱军中问甘夫人，芦苇深处得之；再寻糜氏，答在断墙之后，箭矢如雨。</div><div class="src"><b>史</b><span>陈寿正文仅「保护甘夫人，即后主母也」一语，无寻访经过；糜夫人未见于本役记载。</span></div></div><div class="stamp">乱军</div></article>
+      <article class="chap rv"><div class="num">叁</div><div class="glyph">托 孤<small>III · THE WELL</small></div><div class="body"><div class="desc">糜夫人身被数创，不肯上马，投枯井而死。云解甲，藏幼主于怀，推墙掩井。</div><div class="src yan"><b>演</b><span>糜夫人投井、推墙掩井，见《三国演义》第四十一回；陈寿正文及裴注均无。</span></div></div><div class="stamp">枯井</div></article>
+      <article class="chap rv"><div class="num">肆</div><div class="glyph">夺 锋<small>IV · THE BLADE</small></div><div class="body"><div class="desc">一枪挑落曹将，得青釭剑。锋长三尺，削铁如泥——自此，一枪一剑，可断重围。</div><div class="src yan"><b>演</b><span>青釭剑得自「背剑将军」夏侯恩，见《三国演义》第四十一回；史籍无载。</span></div></div><div class="stamp">青釭</div></article>
+      <article class="chap rv"><div class="num">伍</div><div class="glyph">陷 马<small>V · THE PIT</small></div><div class="body"><div class="desc">马失前蹄，人陷土坑。四下枪戟齐下，忽有红光一道，白龙跃土而起。</div><div class="src yan"><b>演</b><span>人马跌入土坑、红光涌起、马跃出坑，见《三国演义》第四十一回；史籍无载。</span></div></div><div class="stamp">白龙</div></article>
+      <article class="chap rv"><div class="num">陆</div><div class="glyph">破 阵<small>VI · THE BREAK</small></div><div class="body"><div class="desc">枪如梨花，前后翻飞；砍大旗两面，夺槊三条，连斩曹营名将五十余员。</div><div class="src yan"><b>演</b><span>连斩五十余将、砍旗两面、夺槊三条，见《三国演义》第四十一回；陈寿正文无一语及之。</span></div></div><div class="stamp">血袍</div></article>
+      <article class="chap rv"><div class="num">柒</div><div class="glyph">归 营<small>VII · THE RETURN</small></div><div class="body"><div class="desc">血透白袍，怀中幼主犹自酣睡。长坂桥头，玄德掷子于地：为汝这孺子，几损我一员大将。</div><div class="src yan"><b>演</b><span>玄德掷子见《三国演义》第四十二回；陈寿正文此役止于「皆得免难」四字。</span></div></div><div class="stamp">归营</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 影神图 ========== -->
+<section id="figures">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="idx">FIGURINES / 人物 · 器物 · 说书人</div><h2>影 神 图</h2></div>
+      <div class="en">PERSONS &amp; RELICS<br>五 帧</div>
+    </div>
+    <div class="fig-grid">
+      <div class="fig rv d1"><div class="kind">PERSON / 人</div><div class="char">赵</div><div><h3>常山赵子龙</h3><p>身长八尺，姿颜雄伟。不争功，不结党，一生只做一件事：把该带回来的人带回来。</p></div></div>
+      <div class="fig rv d2"><div class="kind">RELIC / 器</div><div class="char">枪</div><div><h3>龙胆亮银枪</h3><p>枪杆一丈二，枪头三尺三。出如龙探爪，收如雪落袖。长坂一日，挑落五十余将。</p></div></div>
+      <div class="fig rv d3"><div class="kind">RELIC / 器</div><div class="char">剑</div><div><h3>青釭剑</h3><p>曹操佩剑，削铁如泥。阵中易主，从此不为魏公佩，只为怀中啼儿开路。</p></div></div>
+      <div class="fig rv d4"><div class="kind">PERSON / 主</div><div class="char">斗</div><div><h3>怀中幼主</h3><p>一无所知的一岁婴孩，睡过整个长坂坡。醒来时，天下已被这一夜分成了三国。</p></div></div>
+      <div class="fig fig-narrator rv d4"><div class="kind">NARRATOR / 话</div><div class="char">话</div><div><h3>说书人</h3><p>史书只给他四十一字，剩下的他讲了一千年。七进七出不在竹简上，在他嘴里。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 尾声 ========== -->
+<section id="epilogue">
+  <div class="wrap">
+    <div class="rv"><div class="epi-line" id="epiLine">一身都是胆</div>
+      <div class="epi-sub">史书寥寥数语 · 说书人一千年　｜　「一身都是胆」刘备语，见《云别传》</div>
+      <div class="epi-en">ALL HEART, ALL COURAGE — BAIHUA / CHANGBAN</div>
+      <div class="epi-seal" id="epiSeal">七 阵 未 破 · 请 回 望 七 进</div>
+      <div class="epi-rule"></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand">白 话 · 长 坂</div>
+  <div class="ft-note">「白话」—— 黑对白，神话对话本；白袍对史书。</div>
+  <p>本站为东方史诗美学的非商业概念练习，取材《三国演义》《三国志》及民间叙事，文字、版式与视觉元素均为原创设计。与任何游戏、影视作品及其权利人无关联，不含任何第三方素材。「七进七出」为文学演绎，非史实记载。</p>
+  <div class="ft-en">FAN CONCEPT SITE · NOT FOR COMMERCIAL USE · 2026</div>
+</footer>
+
+<script>
+(function(){
+  /* 进度条 + 导航 */
+  var bar=document.getElementById('progress'),nav=document.getElementById('nav');
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+    nav.classList.toggle('solid',window.scrollY>60);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* 入阵按钮 */
+  document.getElementById('enterBtn').addEventListener('click',function(){
+    document.getElementById('prologue').scrollIntoView({behavior:'smooth'});
+  });
+
+  /* 史书 / 白话 切换 */
+  var sws=document.querySelectorAll('.switch .sw'),panes=document.querySelectorAll('.pane'),
+      proSign=document.getElementById('proSign');
+  var signs={tale:'— 据《三国演义》及民间叙事演绎 —',annals:'— 全部记载，仅此四十一字 —'};
+  sws.forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.getAttribute('data-pane');
+      sws.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on?'true':'false')});
+      panes.forEach(function(p){p.classList.toggle('on',p.id==='pane-'+k)});
+      proSign.textContent=signs[k];
+    });
+  });
+
+  /* 滚动揭示 */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.13,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el,i){
+    if(el.classList.contains('chap')) el.style.transitionDelay=(i%7*0.05)+'s';
+    io.observe(el);
+  });
+
+  /* 七进进度：逐幕点亮 + 尾声解锁 */
+  var chaps=document.querySelectorAll('.chap'),dotsBox=document.getElementById('dots'),
+      trailNum=document.getElementById('trailNum'),epiSeal=document.getElementById('epiSeal'),
+      epiLine=document.getElementById('epiLine'),seen=new Set(),unlocked=false;
+  var marks=['壹','贰','叁','肆','伍','陆','柒'];
+  marks.forEach(function(m){var d=document.createElement('i');d.textContent=m;dotsBox.appendChild(d)});
+  var dots=dotsBox.querySelectorAll('i');
+  function check(){
+    trailNum.textContent=seen.size;
+    if(!unlocked&&seen.size===chaps.length){
+      unlocked=true;
+      epiSeal.textContent='七 阵 已 破 · 一 身 都 是 胆';
+      epiSeal.classList.add('done');
+      epiLine.classList.add('blaze');
+    }
+  }
+  var cio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var k=+e.target.getAttribute('data-k');
+        if(!seen.has(k)){seen.add(k);dots[k].classList.add('lit');check()}
+        cio.unobserve(e.target);
+      }
+    });
+  },{threshold:.35});
+  chaps.forEach(function(c,i){c.setAttribute('data-k',i);cio.observe(c)});
+
+  /* 灰烬粒子 */
+  var cv=document.getElementById('ash'),ctx=cv.getContext('2d'),pts=[],W,H,raf;
+  function size(){
+    var r=cv.getBoundingClientRect();W=cv.width=r.width;H=cv.height=r.height;
+    var n=Math.min(90,Math.floor(W*H/18000));
+    pts=[];for(var i=0;i<n;i++)pts.push(mk(true));
+  }
+  function mk(init){
+    return{x:Math.random()*W,y:init?Math.random()*H:H+10,
+      s:Math.random()*1.7+.5,vy:-(Math.random()*.42+.12),vx:(Math.random()-.5)*.28,
+      a:Math.random()*.5+.15,ph:Math.random()*6.28,
+      c:Math.random()>.62?'224,194,127':'201,92,42'};
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];p.y+=p.vy;p.x+=p.vx+Math.sin(p.ph+=.012)*.16;
+      if(p.y<-10||p.x<-10||p.x>W+10){pts[i]=mk(false);continue}
+      ctx.beginPath();ctx.fillStyle='rgba('+p.c+','+p.a+')';
+      ctx.arc(p.x,p.y,p.s,0,6.283);ctx.fill();
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  size();draw();
+  window.addEventListener('resize',function(){size()});
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){cancelAnimationFrame(raf)}else{draw()}
+  });
+
+  /* Hero 微视差 */
+  var ridges=document.querySelectorAll('.ridge'),hero=document.querySelector('.hero');
+  hero.addEventListener('mousemove',function(e){
+    var dx=(e.clientX/window.innerWidth-.5),dy=(e.clientY/window.innerHeight-.5);
+    ridges.forEach(function(r,i){r.style.transform='translate('+(dx*(i+1)*7)+'px,'+(dy*(i+1)*4)+'px)'});
+  });
+
+  /* ============ 逐章下滑：章末「下一章」+ 七幕「下一幕」 ============ */
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function goTo(t){if(t)t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
+  var chain=[
+    ['#prologue','#chapters','下 · 七 进','↓','七进'],
+    ['#chapters','#figures','下 · 影 神 图','↓','影神图'],
+    ['#figures','#epilogue','下 · 尾 声','↓','尾声'],
+    ['#epilogue','#top','回 望 卷 首','↑','卷首']
+  ];
+  chain.forEach(function(x){
+    var sec=document.querySelector(x[0]);if(!sec)return;
+    var host=sec.querySelector('.wrap')||sec,
+        wrap=document.createElement('div'),btn=document.createElement('button');
+    wrap.className='next-wrap';
+    btn.type='button';btn.className='next-btn'+(x[3]==='↑'?' up':'');
+    btn.innerHTML=x[2]+' <span>'+x[3]+'</span>';
+    btn.setAttribute('aria-label','前往'+x[4]);
+    btn.addEventListener('click',function(){goTo(document.querySelector(x[1]))});
+    wrap.appendChild(btn);host.appendChild(wrap);
+  });
+  chaps.forEach(function(c,i){
+    var last=i===chaps.length-1,body=c.querySelector('.body');if(!body)return;
+    var btn=document.createElement('button');
+    btn.type='button';btn.className='chap-next';
+    btn.innerHTML=last?'往 影 神 图 <span>↓</span>':'下 一 幕 <span>↓</span>';
+    btn.setAttribute('aria-label',last?'前往影神图':'前往第'+(i+2)+'幕');
+    btn.addEventListener('click',function(){goTo(last?document.getElementById('figures'):chaps[i+1])});
+    body.appendChild(btn);
+  });
+
+  /* ============ 战场声 · Web Audio 实时合成（零音频文件，默认关闭） ============ */
+  var aBtn=document.getElementById('audioBtn'),
+      AC=window.AudioContext||window.webkitAudioContext,
+      actx=null,master=null,battleTimer=null,audioOn=false,beat=0;
+  if(!AC){aBtn.disabled=true;aBtn.title='当前浏览器不支持 Web Audio'}
+  function noiseBuf(dur){
+    var b=actx.createBuffer(1,Math.max(1,Math.floor(actx.sampleRate*dur)),actx.sampleRate),d=b.getChannelData(0);
+    for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+    return b;
+  }
+  /* 金戈交击：不谐和高频泛音 + 高通擦声，短促明亮 */
+  function clash(t,vol){
+    var base=1050+Math.random()*850;
+    [1,1.47,2.09,2.83].forEach(function(r,k){
+      var o=actx.createOscillator(),g=actx.createGain();
+      o.type='sine';o.frequency.value=base*r;
+      g.gain.setValueAtTime(.0001,t);
+      g.gain.exponentialRampToValueAtTime(vol/(k+1),t+.004);
+      g.gain.exponentialRampToValueAtTime(.0001,t+.11+Math.random()*.12);
+      o.connect(g);g.connect(master);o.start(t);o.stop(t+.3);
+    });
+    var ns=actx.createBufferSource(),hp=actx.createBiquadFilter(),ng=actx.createGain();
+    ns.buffer=noiseBuf(.09);hp.type='highpass';hp.frequency.value=2400;
+    ng.gain.setValueAtTime(vol*.45,t);ng.gain.exponentialRampToValueAtTime(.0001,t+.08);
+    ns.connect(hp);hp.connect(ng);ng.connect(master);ns.start(t);ns.stop(t+.09);
+  }
+  /* 战鼓：165→62Hz，衰减更短，不再闷 */
+  function warDrum(t,vol){
+    var o=actx.createOscillator(),g=actx.createGain();
+    o.type='sine';o.frequency.setValueAtTime(165,t);
+    o.frequency.exponentialRampToValueAtTime(62,t+.18);
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.exponentialRampToValueAtTime(vol,t+.008);
+    g.gain.exponentialRampToValueAtTime(.0001,t+.36);
+    o.connect(g);g.connect(master);o.start(t);o.stop(t+.38);
+    var ns=actx.createBufferSource(),bp=actx.createBiquadFilter(),ng=actx.createGain();
+    ns.buffer=noiseBuf(.12);bp.type='bandpass';bp.frequency.value=900;bp.Q.value=.7;
+    ng.gain.setValueAtTime(vol*.3,t);ng.gain.exponentialRampToValueAtTime(.0001,t+.1);
+    ns.connect(bp);bp.connect(ng);ng.connect(master);ns.start(t);ns.stop(t+.12);
+  }
+  /* 箭矢破空：带通扫频噪声 */
+  function arrow(t,vol){
+    var ns=actx.createBufferSource(),bp=actx.createBiquadFilter(),ng=actx.createGain();
+    ns.buffer=noiseBuf(.3);bp.type='bandpass';bp.Q.value=3.5;
+    bp.frequency.setValueAtTime(2600,t);bp.frequency.exponentialRampToValueAtTime(650,t+.26);
+    ng.gain.setValueAtTime(.0001,t);
+    ng.gain.exponentialRampToValueAtTime(vol,t+.05);
+    ng.gain.exponentialRampToValueAtTime(.0001,t+.29);
+    ns.connect(bp);bp.connect(ng);ng.connect(master);ns.start(t);ns.stop(t+.3);
+  }
+  /* 马蹄：三连短击 */
+  function hooves(t,vol){
+    for(var i=0;i<3;i++){
+      var tt=t+i*.085,ns=actx.createBufferSource(),lp=actx.createBiquadFilter(),ng=actx.createGain();
+      ns.buffer=noiseBuf(.06);lp.type='lowpass';lp.frequency.value=420;
+      ng.gain.setValueAtTime(.0001,tt);
+      ng.gain.exponentialRampToValueAtTime(vol*(1-i*.2),tt+.005);
+      ng.gain.exponentialRampToValueAtTime(.0001,tt+.055);
+      ns.connect(lp);lp.connect(ng);ng.connect(master);ns.start(tt);ns.stop(tt+.06);
+    }
+  }
+  /* 号角：短促三泛音，取代低沉长衰减的远埙 */
+  function horn(t,vol){
+    [233,349,466].forEach(function(f,k){
+      var o=actx.createOscillator(),g=actx.createGain();
+      o.type='triangle';o.frequency.value=f;
+      g.gain.setValueAtTime(.0001,t);
+      g.gain.exponentialRampToValueAtTime(vol/(k+1),t+.16);
+      g.gain.exponentialRampToValueAtTime(.0001,t+1.3);
+      o.connect(g);g.connect(master);o.start(t);o.stop(t+1.35);
+    });
+  }
+  function tick(){
+    if(!audioOn||!actx)return;
+    var t=actx.currentTime+.02;beat++;
+    if(beat%3===1)warDrum(t,.7);
+    if(beat%3===0||Math.random()<.55)clash(t+Math.random()*.16,.2);
+    if(Math.random()<.34)clash(t+.26+Math.random()*.2,.12);
+    if(Math.random()<.17)arrow(t+Math.random()*.4,.1);
+    if(Math.random()<.15)hooves(t+Math.random()*.35,.3);
+    if(beat%9===0)horn(t+.1,.08);
+    battleTimer=setTimeout(tick,740+Math.random()*480);
+  }
+  function audioStart(){
+    if(!AC)return;
+    if(!actx){
+      actx=new AC();
+      master=actx.createGain();master.gain.value=0;master.connect(actx.destination);
+      /* 战场底噪：620Hz 带通「人马嘈杂」，不再是 300Hz 低通的闷风声 */
+      var src=actx.createBufferSource();src.buffer=noiseBuf(2);src.loop=true;
+      var bp=actx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=620;bp.Q.value=.6;
+      var ng=actx.createGain();ng.gain.value=.26;
+      var lfo=actx.createOscillator(),lg=actx.createGain();
+      lfo.frequency.value=.11;lg.gain.value=.12;
+      lfo.connect(lg);lg.connect(ng.gain);
+      src.connect(bp);bp.connect(ng);ng.connect(master);
+      src.start();lfo.start();
+    }
+    actx.resume();
+    var n=actx.currentTime;
+    master.gain.cancelScheduledValues(n);
+    master.gain.setValueAtTime(0,n);
+    master.gain.linearRampToValueAtTime(.22,n+.9);
+    audioOn=true;beat=0;clearTimeout(battleTimer);tick();
+  }
+  function audioStop(){
+    audioOn=false;clearTimeout(battleTimer);
+    if(actx&&master){
+      var n=actx.currentTime;
+      master.gain.cancelScheduledValues(n);
+      master.gain.setValueAtTime(master.gain.value,n);
+      master.gain.linearRampToValueAtTime(0,n+.5);
+    }
+  }
+  aBtn.addEventListener('click',function(){
+    if(!AC)return;
+    if(audioOn)audioStop();else audioStart();
+    aBtn.classList.toggle('on',audioOn);
+    aBtn.setAttribute('aria-pressed',audioOn?'true':'false');
+    aBtn.querySelector('.au-state').textContent=audioOn?'开':'关';
+    aBtn.title=audioOn?'战场声播放中 · 点击关闭':'战场声 · 金戈交击（点击开启）';
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(!actx)return;
+    if(document.hidden){clearTimeout(battleTimer);actx.suspend()}
+    else if(audioOn){actx.resume();clearTimeout(battleTimer);tick()}
+  });
+})();
+</script>
+</body>
+</html>
